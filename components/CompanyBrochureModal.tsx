@@ -61,10 +61,12 @@ export default function CompanyBrochureModal({
         <div className="overflow-y-auto p-6 sm:p-10 space-y-8 bg-slate-900 text-slate-200 print:bg-white print:text-black">
           {/* Header */}
           <div className="border-b border-slate-700 pb-6 print:border-black flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-            <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-xl bg-amber-500 flex items-center justify-center text-slate-950">
-                <Compass className="w-7 h-7" />
-              </div>
+            <div className="flex items-center gap-4">
+              <img
+                src="/images/logo.png"
+                alt="Harsh Survey Logo"
+                className="w-16 h-16 rounded-xl object-contain bg-slate-950 p-1 border border-slate-700 print:border-black"
+              />
               <div>
                 <h1 className="text-2xl font-black text-white tracking-tight print:text-black">
                   HARSH SURVEY CONSULTANCY

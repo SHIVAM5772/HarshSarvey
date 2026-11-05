@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import {
   Compass,
   Phone,
@@ -26,6 +27,7 @@ export default function Navbar({
 }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -36,14 +38,15 @@ export default function Navbar({
   }, []);
 
   const navLinks = [
-    { label: "About", href: "#about" },
-    { label: "Services", href: "#services" },
-    { label: "SolarX Division", href: "#solarx", badge: "Clean Energy" },
-    { label: "Projects", href: "#projects" },
-    { label: "Equipment", href: "#equipment" },
-    { label: "Team", href: "#team" },
-    { label: "Clients", href: "#clients" },
-    { label: "Contact", href: "#contact" },
+    { label: "Home", href: "/" },
+    { label: "About", href: "/about" },
+    { label: "Services", href: "/services" },
+    { label: "SolarX Division", href: "/solarx", badge: "Clean Energy" },
+    { label: "Projects", href: "/projects" },
+    { label: "Equipment", href: "/equipment" },
+    { label: "Team", href: "/team" },
+    { label: "Clients", href: "/clients" },
+    { label: "Contact", href: "/contact" },
   ];
 
   return (
@@ -94,17 +97,19 @@ export default function Navbar({
       <header
         className={`sticky top-0 z-50 transition-all duration-300 ${
           isScrolled
-            ? "bg-slate-950/90 backdrop-blur-md border-b border-slate-800/80 shadow-xl shadow-black/40 py-2.5"
-            : "bg-slate-950/70 backdrop-blur-sm border-b border-white/5 py-4"
+            ? "bg-slate-950/95 backdrop-blur-md border-b border-slate-800/80 shadow-xl shadow-black/40 py-2.5"
+            : "bg-slate-950/80 backdrop-blur-sm border-b border-white/5 py-3.5"
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           {/* Brand Logo */}
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="w-11 h-11 rounded-xl bg-gradient-to-tr from-amber-600 to-amber-400 flex items-center justify-center shadow-lg shadow-amber-500/20 group-hover:scale-105 transition-transform">
-              <Compass className="w-6 h-6 text-slate-950 stroke-[2.5]" />
-            </div>
-            <div>
+            <img
+              src="/images/logo.png"
+              alt="Harsh Survey Consultancy Logo"
+              className="h-11 sm:h-12 w-auto object-contain rounded-xl shadow-lg shadow-black/50 border border-slate-800/80 group-hover:scale-105 group-hover:border-amber-500/40 transition-all duration-300"
+            />
+            <div className="hidden sm:block">
               <div className="flex items-center gap-2">
                 <span className="font-extrabold text-lg sm:text-xl tracking-tight text-white group-hover:text-amber-400 transition-colors">
                   HARSH SURVEY
@@ -120,40 +125,52 @@ export default function Navbar({
           </Link>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-6">
-            {navLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                className="text-sm font-medium text-slate-300 hover:text-amber-400 transition-colors relative flex items-center gap-1.5"
-              >
-                {link.label}
-                {link.badge && (
-                  <span className="text-[9px] font-semibold px-1.5 py-0.2 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
-                    {link.badge}
-                  </span>
-                )}
-              </a>
-            ))}
+          <nav className="hidden lg:flex items-center gap-5">
+            {navLinks.map((link) => {
+              const isActive =
+                link.href === "/" ? pathname === "/" : pathname.startsWith(link.href);
+
+              return (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  className={`text-xs font-semibold transition-all relative flex items-center gap-1.5 py-1 ${
+                    isActive
+                      ? "text-amber-400 font-bold"
+                      : "text-slate-300 hover:text-white"
+                  }`}
+                >
+                  {link.label}
+                  {link.badge && (
+                    <span className="text-[9px] font-bold px-1.5 py-0.2 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
+                      {link.badge}
+                    </span>
+                  )}
+                  {isActive && (
+                    <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-amber-400 rounded-full" />
+                  )}
+                </Link>
+              );
+            })}
           </nav>
 
           {/* Right Action CTAs */}
           <div className="hidden sm:flex items-center gap-3">
             <button
               onClick={onOpenDossier}
-              className="text-xs font-semibold px-3.5 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 flex items-center gap-1.5 transition-all"
+              className="text-xs font-semibold px-3 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 flex items-center gap-1.5 transition-all"
               title="View Official Company Profile Dossier"
             >
               <FileText className="w-3.5 h-3.5 text-amber-400" />
-              <span>Company Dossier</span>
+              <span>Dossier</span>
             </button>
 
             <button
               onClick={onOpenQuote}
-              className="text-xs font-bold px-4 py-2.5 rounded-lg bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 shadow-md shadow-amber-500/25 flex items-center gap-1.5 transition-all hover:scale-102"
+              className="text-xs font-bold px-3.5 py-2 rounded-lg bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 shadow-md shadow-amber-500/25 flex items-center gap-1.5 transition-all"
             >
               <MessageSquare className="w-3.5 h-3.5" />
-              <span>Get Site Quote</span>
+              <span>Get Quote</span>
             </button>
           </div>
 
@@ -196,24 +213,31 @@ export default function Navbar({
             </div>
 
             <div className="space-y-1">
-              {navLinks.map((link) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="flex items-center justify-between text-slate-300 hover:text-amber-400 py-2 text-sm font-medium border-b border-slate-800/40"
-                >
-                  <span className="flex items-center gap-2">
-                    {link.label}
-                    {link.badge && (
-                      <span className="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/10 text-emerald-400">
-                        {link.badge}
-                      </span>
-                    )}
-                  </span>
-                  <ChevronRight className="w-4 h-4 text-slate-500" />
-                </a>
-              ))}
+              {navLinks.map((link) => {
+                const isActive =
+                  link.href === "/" ? pathname === "/" : pathname.startsWith(link.href);
+
+                return (
+                  <Link
+                    key={link.label}
+                    href={link.href}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className={`flex items-center justify-between py-2 text-sm font-medium border-b border-slate-800/40 ${
+                      isActive ? "text-amber-400 font-bold" : "text-slate-300"
+                    }`}
+                  >
+                    <span className="flex items-center gap-2">
+                      {link.label}
+                      {link.badge && (
+                        <span className="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/10 text-emerald-400">
+                          {link.badge}
+                        </span>
+                      )}
+                    </span>
+                    <ChevronRight className="w-4 h-4 text-slate-500" />
+                  </Link>
+                );
+              })}
             </div>
 
             <div className="pt-2 flex flex-col gap-2">
@@ -245,4 +269,3 @@ export default function Navbar({
     </>
   );
 }
-

@@ -66,10 +66,12 @@ export default function Footer({
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10">
           {/* Brand Info */}
           <div className="lg:col-span-4 space-y-4">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-600 to-amber-400 flex items-center justify-center shadow-lg shadow-amber-500/20">
-                <Compass className="w-6 h-6 text-slate-950 stroke-[2.5]" />
-              </div>
+            <div className="flex items-center gap-3.5">
+              <img
+                src="/images/logo.png"
+                alt="Harsh Survey Consultancy Logo"
+                className="w-14 h-14 rounded-2xl object-contain bg-slate-900 border border-slate-800 shadow-xl"
+              />
               <div>
                 <span className="font-extrabold text-base text-white tracking-tight block">
                   HARSH SURVEY CONSULTANCY
@@ -97,31 +99,34 @@ export default function Footer({
           {/* Quick Links */}
           <div className="lg:col-span-2 space-y-3">
             <h4 className="text-xs font-bold text-white uppercase tracking-wider">
-              Quick Navigation
+              Navigation Pages
             </h4>
             <ul className="space-y-2">
               <li>
-                <a href="#about" className="hover:text-amber-400 transition-colors">About Firm</a>
+                <Link href="/about" className="hover:text-amber-400 transition-colors">About Us</Link>
               </li>
               <li>
-                <a href="#services" className="hover:text-amber-400 transition-colors">Services Spectrum</a>
+                <Link href="/services" className="hover:text-amber-400 transition-colors">Services Spectrum</Link>
               </li>
               <li>
-                <a href="#solarx" className="hover:text-emerald-400 transition-colors flex items-center gap-1">
+                <Link href="/solarx" className="hover:text-emerald-400 transition-colors flex items-center gap-1">
                   <Sun className="w-3 h-3 text-emerald-400" /> SolarX Division
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#projects" className="hover:text-amber-400 transition-colors">50+ Project Record</a>
+                <Link href="/projects" className="hover:text-amber-400 transition-colors">50+ Project Record</Link>
               </li>
               <li>
-                <a href="#equipment" className="hover:text-amber-400 transition-colors">Hardware Fleet</a>
+                <Link href="/equipment" className="hover:text-amber-400 transition-colors">Hardware Fleet</Link>
               </li>
               <li>
-                <a href="#team" className="hover:text-amber-400 transition-colors">Engineering Team</a>
+                <Link href="/team" className="hover:text-amber-400 transition-colors">Our Team</Link>
               </li>
               <li>
-                <a href="#quote-calculator" className="hover:text-amber-400 transition-colors">Cost Estimator</a>
+                <Link href="/clients" className="hover:text-amber-400 transition-colors">Clients & PSUs</Link>
+              </li>
+              <li>
+                <Link href="/contact" className="hover:text-amber-400 transition-colors">Contact & Quote</Link>
               </li>
             </ul>
           </div>

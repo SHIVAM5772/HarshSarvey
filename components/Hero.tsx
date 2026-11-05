@@ -33,8 +33,8 @@ export default function Hero({
           {/* Left Column: Core Value Proposition */}
           <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
             {/* Pill Badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900/90 border border-amber-500/30 text-amber-300 text-xs font-semibold shadow-inner">
-              <span className="flex h-2 w-2 rounded-full bg-amber-400 animate-pulse" />
+            <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-slate-900/90 border border-amber-500/30 text-amber-300 text-xs font-semibold shadow-inner">
+              <img src="/images/logo.png" alt="Logo" className="w-5 h-5 object-contain rounded-full" />
               <span>Harsh Survey Consultancy × SolarX Energy Solutions</span>
             </div>
 
@@ -125,7 +125,7 @@ export default function Hero({
 
               {/* Floating Badge in Image */}
               <div className="absolute top-4 left-4 bg-slate-950/85 backdrop-blur-md border border-white/10 px-3 py-1.5 rounded-lg flex items-center gap-2">
-                <Compass className="w-4 h-4 text-amber-400 animate-spin-slow" />
+                <img src="/images/logo.png" alt="Logo" className="w-5 h-5 object-contain rounded" />
                 <span className="text-xs font-semibold text-slate-100">
                   Electronic Total Station & DGPS
                 </span>
