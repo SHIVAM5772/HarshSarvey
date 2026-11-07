@@ -12,7 +12,6 @@ import {
   ArrowUp,
   MessageSquare,
 } from "lucide-react";
-import ThemeToggle from "./ThemeToggle";
 import { COMPANY_PROFILE } from "@/data/surveyData";
 
 export default function Footer({
@@ -197,8 +196,6 @@ export default function Footer({
           </p>
           <div className="footer-dock-actions">
             <Link href="/admin" className="footer-dock-button">Admin Login</Link>
-            <button type="button" onClick={onOpenDossier} className="footer-dock-button">Company Profile</button>
-            <ThemeToggle className="footer-dock-theme" />
             <button type="button" onClick={scrollToTop} className="footer-dock-button" aria-label="Back to top">
               <ArrowUp size={14} /><span>Top</span>
             </button>

@@ -2683,11 +2683,6 @@ html {
   color: var(--accent);
   border-color: var(--accent);
 }
-.footer-dock-theme {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-}
 @media (max-width: 900px) {
   .footer-dock {
     padding-inline: 16px;
@@ -2695,9 +2690,6 @@ html {
   }
   .footer-dock-copyright span {
     display: block;
-  }
-  .footer-dock-actions > button.footer-dock-button:first-of-type {
-    display: none;
   }
 }
 @media (max-width: 540px) {

@@ -376,11 +376,9 @@ html { scroll-padding-bottom: calc(var(--footer-dock-height) + 20px); }
 .footer-dock-actions { display: flex; justify-content: flex-end; align-items: center; gap: 8px; }
 .footer-dock-button { display: inline-flex; align-items: center; justify-content: center; gap: 5px; min-height: 32px; padding: 6px 12px; border: 1px solid var(--border-color); border-radius: 18px; background: var(--bg-card-muted); color: var(--text-secondary); font-size: 10px; font-weight: 600; cursor: pointer; white-space: nowrap; transition: border-color .2s, color .2s; }
 .footer-dock-button:hover { color: var(--accent); border-color: var(--accent); }
-.footer-dock-theme { width: 32px; height: 32px; border-radius: 50%; }
 @media (max-width: 900px) {
   .footer-dock { padding-inline: 16px; gap: 10px; }
   .footer-dock-copyright span { display: block; }
-  .footer-dock-actions > button.footer-dock-button:first-of-type { display: none; }
 }
 @media (max-width: 540px) {
   :root { --footer-dock-height: 88px; }
