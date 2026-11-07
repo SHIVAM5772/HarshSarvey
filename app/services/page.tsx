@@ -29,7 +29,7 @@ export default function ServicesPage() {
     { id: "all", label: "All 8+ Spectrum Services" },
     { id: "survey", label: "Topography & DGPS" },
     { id: "infrastructure", label: "Highways, Rail & Pipelines" },
-    { id: "solar", label: "SolarX Clean Energy" },
+    { id: "solar", label: "Solar & Clean Energy" },
     { id: "geotech", label: "Soil Testing (SBC)" },
     { id: "utilities", label: "Urban Drainage & GIS" },
   ];

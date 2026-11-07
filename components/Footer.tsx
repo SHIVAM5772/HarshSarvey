@@ -12,6 +12,7 @@ import {
   ArrowUp,
   MessageSquare,
 } from "lucide-react";
+import ThemeToggle from "./ThemeToggle";
 import { COMPANY_PROFILE } from "@/data/surveyData";
 
 export default function Footer({
@@ -77,7 +78,7 @@ export default function Footer({
                   HARSH SURVEY CONSULTANCY
                 </span>
                 <span className="text-[10px] text-amber-400 font-bold tracking-wider">
-                  & SOLARX ENERGY SOLUTIONS
+                  SURVEYING & SOLAR SOLUTIONS
                 </span>
               </div>
             </div>
@@ -109,8 +110,8 @@ export default function Footer({
                 <Link href="/services" className="hover:text-amber-400 transition-colors">Services Spectrum</Link>
               </li>
               <li>
-                <Link href="/solarx" className="hover:text-emerald-400 transition-colors flex items-center gap-1">
-                  <Sun className="w-3 h-3 text-emerald-400" /> SolarX Division
+                <Link href="/solar" className="hover:text-emerald-400 transition-colors flex items-center gap-1">
+                  <Sun className="w-3 h-3 text-emerald-400" /> Solar Services
                 </Link>
               </li>
               <li>
@@ -170,8 +171,8 @@ export default function Footer({
 
               <div className="flex items-center gap-2">
                 <Phone className="w-4 h-4 text-emerald-400 shrink-0" />
-                <a href={`tel:${COMPANY_PROFILE.contacts.solarHead.phone}`} className="hover:text-emerald-400">
-                  {COMPANY_PROFILE.contacts.solarHead.phone} (Bhupendra Singh)
+                <a href={`tel:${COMPANY_PROFILE.contacts.managingDirector.phones[0]}`} className="hover:text-emerald-400">
+                  {COMPANY_PROFILE.contacts.managingDirector.phones[0]} (Harsh Survey)
                 </a>
               </div>
 
@@ -185,26 +186,21 @@ export default function Footer({
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="mt-12 pt-6 border-t border-slate-900 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-slate-500">
-          <div>
-            © {new Date().getFullYear()} Harsh Survey Consultancy & SolarX Energy Solutions. All Rights Reserved.
+        {/* Fixed utility bar */}
+        <div className="footer-dock">
+          <div className="footer-dock-credit">
+            <span>Designed &amp; Developed by</span>
+            <strong>Shivam Hatizar</strong>
           </div>
-
-          <div className="flex items-center gap-4">
-            <button
-              onClick={onOpenDossier}
-              className="text-amber-400 hover:underline"
-            >
-              Executive Qualification Dossier
-            </button>
-            <span>•</span>
-            <button
-              onClick={scrollToTop}
-              className="flex items-center gap-1 hover:text-white transition-colors"
-            >
-              <span>Back to Top</span>
-              <ArrowUp className="w-3.5 h-3.5" />
+          <p className="footer-dock-copyright">
+            © {new Date().getFullYear()} Harsh Survey Consultancy.<span> All Rights Reserved.</span>
+          </p>
+          <div className="footer-dock-actions">
+            <Link href="/admin" className="footer-dock-button">Admin Login</Link>
+            <button type="button" onClick={onOpenDossier} className="footer-dock-button">Company Profile</button>
+            <ThemeToggle className="footer-dock-theme" />
+            <button type="button" onClick={scrollToTop} className="footer-dock-button" aria-label="Back to top">
+              <ArrowUp size={14} /><span>Top</span>
             </button>
           </div>
         </div>

@@ -17,7 +17,7 @@ import {
 } from "lucide-react";
 import { COMPANY_PROFILE } from "@/data/surveyData";
 
-export default function SolarXSpotlight({
+export default function SolarSpotlight({
   onOpenSolarQuote,
 }: {
   onOpenSolarQuote: () => void;
@@ -46,7 +46,7 @@ export default function SolarXSpotlight({
   ];
 
   return (
-    <section id="solarx" className="py-20 bg-slate-950 border-b border-slate-900 relative overflow-hidden">
+    <section id="solar" className="py-20 bg-slate-950 border-b border-slate-900 relative overflow-hidden">
       {/* Background accents */}
       <div className="absolute top-1/2 left-0 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
@@ -63,27 +63,27 @@ export default function SolarXSpotlight({
                 <span>CLEAN ENERGY & GEOTECHNICAL DIVISION</span>
               </div>
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight">
-                SolarX Energy Solutions
+                Harsh Survey Consultancy — Solar Services
                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-amber-300 text-2xl sm:text-3xl md:text-4xl mt-1 font-bold">
                   “We Handle The Ground Work — You Enjoy The Power”
                 </span>
               </h2>
               <p className="text-slate-300 text-sm sm:text-base leading-relaxed max-w-2xl">
-                Led by <strong className="text-white">Bhupendra Singh</strong>, SolarX Energy seamlessly integrates with Harsh Survey Consultancy to deliver high-yield solar power solutions. From raw land topography and SBC soil testing to full solar plant installation across India.
+                Harsh Survey Consultancy delivers land surveying and high-yield solar power solutions under one roof. From raw land topography and SBC soil testing to full solar plant installation across India.
               </p>
 
               {/* Direct Solar Contacts */}
               <div className="flex flex-wrap items-center gap-4 pt-2">
                 <a
-                  href={`tel:${COMPANY_PROFILE.contacts.solarHead.phone}`}
+                  href={`tel:${COMPANY_PROFILE.contacts.managingDirector.phones[0]}`}
                   className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs uppercase tracking-wider transition-all shadow-lg shadow-emerald-500/20"
                 >
                   <Phone className="w-4 h-4" />
-                  <span>Call Bhupendra Singh: {COMPANY_PROFILE.contacts.solarHead.phone}</span>
+                  <span>Call Harsh Survey: {COMPANY_PROFILE.contacts.managingDirector.phones[0]}</span>
                 </a>
 
                 <a
-                  href={`https://wa.me/${COMPANY_PROFILE.contacts.solarHead.whatsapp}?text=Hello%20SolarX%20Energy,%20I%20am%20interested%20in%20Solar%20Survey%20/%20Soil%20Testing%20services.`}
+                  href={`https://wa.me/${COMPANY_PROFILE.contacts.managingDirector.whatsapp}?text=Hello%20Harsh%20Survey%20Consultancy,%20I%20am%20interested%20in%20Solar%20Survey%20/%20Soil%20Testing%20services.`}
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-emerald-400 font-semibold text-xs border border-emerald-500/30 transition-all"
@@ -94,7 +94,7 @@ export default function SolarXSpotlight({
 
                 <span className="text-xs text-slate-400 flex items-center gap-1.5">
                   <Mail className="w-3.5 h-3.5 text-slate-500" />
-                  {COMPANY_PROFILE.contacts.solarHead.email}
+                  {COMPANY_PROFILE.contacts.managingDirector.emails[0]}
                 </span>
               </div>
             </div>
@@ -104,12 +104,12 @@ export default function SolarXSpotlight({
               <div className="p-6 rounded-2xl bg-slate-900/90 border border-emerald-500/30 backdrop-blur-md relative space-y-3">
                 <Quote className="w-8 h-8 text-emerald-400/40" />
                 <p className="text-xs sm:text-sm text-slate-200 italic leading-relaxed">
-                  “SolarX Energy completely transformed our approach to energy — from installation to support, everything was seamless and efficient.”
+                  Surveying, soil testing, solar installation and commissioning—all coordinated by Harsh Survey Consultancy.
                 </p>
                 <div className="pt-2 border-t border-slate-800 flex items-center justify-between">
-                  <span className="text-xs font-bold text-white">— Ravi Jaiswal</span>
+                  <span className="text-xs font-bold text-white">Survey to commissioning</span>
                   <span className="text-[10px] text-emerald-400 font-semibold px-2 py-0.5 rounded bg-emerald-500/10">
-                    Verified Client Review
+                    Our solar capabilities
                   </span>
                 </div>
               </div>
@@ -181,7 +181,7 @@ export default function SolarXSpotlight({
           <div className="lg:col-span-6 grid grid-cols-2 gap-4">
             <div className="space-y-4">
               <img
-                src="https://images.unsplash.com/photo-1509391365360-2e959784a276?auto=format&fit=crop&w=600&q=80"
+                src="/images/solar-farm.jpg"
                 alt="Solar Farm Array"
                 className="rounded-xl h-44 w-full object-cover border border-slate-700 shadow-md"
               />

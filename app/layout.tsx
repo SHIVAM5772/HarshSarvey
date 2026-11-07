@@ -9,12 +9,12 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Harsh Survey Consultancy & SolarX | Precision Land Surveying & Solar Engineering",
+  title: "Harsh Survey Consultancy | Precision Land Surveying & Solar Engineering",
   description:
     "Leading Survey, Planning, Drawing, Geotechnical, and Solar EPC Consultancy in India. Specializing in Topographical Surveys, DGPS & Total Station Mapping, Highway DPRs, Transmission Lines, Pipelines, and Solar Power Projects.",
   keywords: [
     "Harsh Survey Consultancy",
-    "SolarX Energy Solutions",
+    "Harsh Survey Consultancy — Solar Services",
     "Land Survey Agra",
     "DGPS Survey",
     "Total Station Survey",
@@ -24,7 +24,11 @@ export const metadata: Metadata = {
     "Soil Testing SBC Report",
     "GIS Mapping Uttar Pradesh",
   ],
-  authors: [{ name: "Harsh Survey Consultancy & SolarX Energy" }],
+  authors: [{ name: "Harsh Survey Consultancy" }],
+  icons: {
+    icon: "/icon.png",
+    apple: "/icon.png",
+  },
 };
 
 export default function RootLayout({
@@ -33,10 +37,24 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className="scroll-smooth dark" suppressHydrationWarning>
       <head>
-        <link rel="icon" href="/images/logo.png" type="image/png" />
-        <link rel="apple-touch-icon" href="/images/logo.png" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              try {
+                var savedTheme = localStorage.getItem('harsh-theme') || 'dark';
+                if (savedTheme === 'light') {
+                  document.documentElement.classList.remove('dark');
+                  document.documentElement.classList.add('light');
+                } else {
+                  document.documentElement.classList.add('dark');
+                  document.documentElement.classList.remove('light');
+                }
+              } catch (e) {}
+            `,
+          }}
+        />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
@@ -44,7 +62,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="min-h-screen bg-slate-950 text-slate-100 antialiased font-sans">
+      <body className="min-h-screen antialiased font-sans">
         <SiteLayout>{children}</SiteLayout>
       </body>
     </html>

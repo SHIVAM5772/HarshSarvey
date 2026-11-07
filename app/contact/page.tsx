@@ -10,7 +10,7 @@ export default function ContactPage() {
     <div>
       <PageHeader
         badge="GET IN TOUCH WITH OUR DIRECTORS"
-        title="Contact Harsh Survey & SolarX"
+        title="Contact Harsh Survey Consultancy"
         subtitle="Connect with our managing directors directly for survey feasibility, quotation estimates, or immediate field mobilization across India."
         breadcrumbs={[{ label: "Contact Us" }]}
       />

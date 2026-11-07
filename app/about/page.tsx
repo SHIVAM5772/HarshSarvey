@@ -31,14 +31,14 @@ export default function AboutPage() {
     { year: "2010", title: "Telecom & Urban Infrastructure", desc: "Awarded massive 6,500 Hectares survey across Punjab by HFCL Infotech & Greater Mohali for GAMADA." },
     { year: "2012-13", title: "Solar & Oil Pipelines", desc: "Executed landmark 22MW Phalodi Solar project for L&T Power and 70 KM GAIL gas pipeline route survey." },
     { year: "2015-18", title: "National Highways & Railways", desc: "Expanded into PMGSY DPRs, Patiala-Yamunanagar 100km SH-06, and Manesar-Patli / Kandla Port Rail corridors." },
-    { year: "Present", title: "SolarX Clean Energy Vertical", desc: "Strategic expansion into certified Geotechnical Soil Testing (SBC) and turnkey Solar EPC installation under Bhupendra Singh." },
+    { year: "Present", title: "Solar & Clean Energy Vertical", desc: "Strategic expansion into certified Geotechnical Soil Testing (SBC) and turnkey Solar EPC installation by Harsh Survey Consultancy." },
   ];
 
   return (
     <div>
       <PageHeader
         badge="ABOUT OUR CONSULTANCY"
-        title="15+ Years of Precision Geodesy & Clean Energy Leadership"
+        title="15+ Years of Precision Surveying & Solar Engineering"
         subtitle="Harsh Survey Consultancy has been a trusted partner to Central Ministries, State Authorities, and Fortune-500 developers across India since 2009."
         breadcrumbs={[{ label: "About Us" }]}
       />
@@ -68,10 +68,10 @@ export default function AboutPage() {
               <div className="p-5 rounded-2xl bg-gradient-to-br from-emerald-950/40 via-slate-900 to-slate-950 border border-emerald-500/30 text-slate-300 text-sm space-y-2">
                 <div className="flex items-center gap-2 text-emerald-400 font-bold">
                   <Sun className="w-4 h-4" />
-                  <span>The SolarX Energy Division Expansion</span>
+                  <span>Solar Engineering at Harsh Survey Consultancy</span>
                 </div>
                 <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                  Under the leadership of <strong className="text-white font-semibold">Bhupendra Singh</strong>, our clean energy vertical — <strong>SolarX Energy Solutions</strong> — provides turnkey capabilities: starting from high-density 5x5m spot level topography and geotechnical Soil Testing (certified SBC reports) to structural pile pull-out tests and complete solar farm commissioning.
+                  Alongside our surveying services, <strong>Harsh Survey Consultancy</strong> provides turnkey solar capabilities: starting from high-density 5x5m spot level topography and geotechnical Soil Testing (certified SBC reports) to structural pile pull-out tests and complete solar farm commissioning.
                 </p>
               </div>
 
@@ -113,8 +113,8 @@ export default function AboutPage() {
                   <span className="text-amber-400 font-semibold">Ram Kumar (Civil Engg)</span>
                 </div>
                 <div className="flex justify-between py-1 border-b border-slate-800/60">
-                  <span className="text-slate-400">Clean Energy Head</span>
-                  <span className="text-emerald-400 font-semibold">Bhupendra Singh (SolarX)</span>
+                  <span className="text-slate-400">Solar Services</span>
+                  <span className="text-emerald-400 font-semibold">Harsh Survey Consultancy</span>
                 </div>
                 <div className="flex justify-between py-1 border-b border-slate-800/60">
                   <span className="text-slate-400">Head Office</span>

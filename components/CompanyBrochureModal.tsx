@@ -75,7 +75,7 @@ export default function CompanyBrochureModal({
                   SURVEY, PLANNING, DRAWING, DESIGN & CLEAN ENERGY SOLUTIONS
                 </p>
                 <p className="text-[11px] text-slate-400 print:text-slate-600">
-                  In Strategic Partnership with SolarX Energy Solutions (Soil Testing & Turnkey Solar)
+                  Land Surveying, Soil Testing & Turnkey Solar by Harsh Survey Consultancy
                 </p>
               </div>
             </div>

@@ -42,7 +42,7 @@ export default function QuoteCalculator({
       contact: "survey",
     },
     solar: {
-      label: "Solar Power Plant Land Survey (SolarX)",
+      label: "Solar Power Plant Land Survey",
       unit: "Megawatts (MW) or Acres",
       defaultQty: 20,
       rateMultiplier: 1.2,
@@ -95,10 +95,7 @@ export default function QuoteCalculator({
   }, [quantity, terrain, currentConfig]);
 
   const handleSendWhatsApp = () => {
-    const contactNumber =
-      currentConfig.contact === "solar"
-        ? COMPANY_PROFILE.contacts.solarHead.whatsapp
-        : COMPANY_PROFILE.contacts.managingDirector.whatsapp;
+    const contactNumber = COMPANY_PROFILE.contacts.managingDirector.whatsapp;
 
     const message = encodeURIComponent(
       `*SITE SURVEY / ESTIMATE INQUIRY*\n` +
@@ -316,11 +313,11 @@ export default function QuoteCalculator({
                 </a>
 
                 <a
-                  href={`tel:${COMPANY_PROFILE.contacts.solarHead.phone}`}
+                  href={`tel:${COMPANY_PROFILE.contacts.managingDirector.phones[0]}`}
                   className="py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 flex items-center justify-center gap-1.5 transition-colors font-medium text-center"
                 >
                   <Sun className="w-3.5 h-3.5 text-emerald-400" />
-                  <span>Call Bhupendra (Solar)</span>
+                  <span>Call Harsh Survey (Solar)</span>
                 </a>
               </div>
             </div>

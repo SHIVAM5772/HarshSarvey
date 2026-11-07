@@ -1,6 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  devIndicators: false,
+  redirects() {
+    return [{ source: "/solarx", destination: "/solar", permanent: true }];
+  },
   experimental: {
     cpus: 4,
   },

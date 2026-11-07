@@ -37,7 +37,7 @@ export default function TechnicalWorkflow() {
     },
     {
       num: "04",
-      title: "Geotechnical Investigation & SBC (SolarX)",
+      title: "Geotechnical Investigation & SBC",
       desc: "Soil core sampling, Standard Penetration Tests (SPT), and Safe Bearing Capacity testing for foundation design.",
       icon: <TestTubes className="w-5 h-5 text-emerald-400" />,
       detail: "Certified laboratory SBC reports and on-site pile pull-out verification.",

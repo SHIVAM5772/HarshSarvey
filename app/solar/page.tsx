@@ -20,7 +20,7 @@ import {
 } from "lucide-react";
 import { COMPANY_PROFILE } from "@/data/surveyData";
 
-export default function SolarXPage() {
+export default function SolarPage() {
   const [quoteOpen, setQuoteOpen] = useState(false);
 
   const solarPillars = [
@@ -60,9 +60,9 @@ export default function SolarXPage() {
     <div>
       <PageHeader
         badge="CLEAN ENERGY & GEOTECHNICAL DIVISION"
-        title="SolarX Energy Solutions"
+        title="Harsh Survey Consultancy — Solar Services"
         subtitle="Bridging raw land acquisition with turnkey solar generation. We deliver high-precision 5x5m land topography, certified SBC geotechnical soil reports, pile pull-out testing, and complete EPC execution."
-        breadcrumbs={[{ label: "SolarX Division" }]}
+        breadcrumbs={[{ label: "Solar Services" }]}
       />
 
       <div className="py-16 bg-slate-950">
@@ -73,7 +73,7 @@ export default function SolarXPage() {
               <div className="lg:col-span-8 space-y-4">
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/40 text-emerald-400 text-xs font-bold">
                   <Sun className="w-3.5 h-3.5" />
-                  <span>DIVISION HEAD: BHUPENDRA SINGH</span>
+                  <span>HARSH SURVEY CONSULTANCY · SOLAR SERVICES</span>
                 </div>
 
                 <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
@@ -81,21 +81,21 @@ export default function SolarXPage() {
                 </h2>
 
                 <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
-                  Solar farm investments demand absolute certainty in terrain drainage and foundation stability. SolarX Energy Solutions integrates certified civil surveyors and geotechnical soil engineers to deliver turnkey solar feasibility across India.
+                  Solar farm investments demand absolute certainty in terrain drainage and foundation stability. Harsh Survey Consultancy — Solar Services integrates certified civil surveyors and geotechnical soil engineers to deliver turnkey solar feasibility across India.
                 </p>
 
                 {/* Direct Contact Pills */}
                 <div className="flex flex-wrap items-center gap-3 pt-2">
                   <a
-                    href={`tel:${COMPANY_PROFILE.contacts.solarHead.phone}`}
+                    href={`tel:${COMPANY_PROFILE.contacts.managingDirector.phones[0]}`}
                     className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs uppercase tracking-wider transition-all shadow-lg shadow-emerald-500/20"
                   >
                     <Phone className="w-4 h-4" />
-                    <span>Call Bhupendra Singh: {COMPANY_PROFILE.contacts.solarHead.phone}</span>
+                    <span>Call Harsh Survey: {COMPANY_PROFILE.contacts.managingDirector.phones[0]}</span>
                   </a>
 
                   <a
-                    href={`https://wa.me/${COMPANY_PROFILE.contacts.solarHead.whatsapp}?text=Hello%20SolarX%20Energy,%20I%20need%20a%20Solar%20Survey%20/%20Soil%20Testing%20quote.`}
+                    href={`https://wa.me/${COMPANY_PROFILE.contacts.managingDirector.whatsapp}?text=Hello%20Harsh%20Survey%20Consultancy,%20I%20need%20a%20Solar%20Survey%20/%20Soil%20Testing%20quote.`}
                     target="_blank"
                     rel="noreferrer"
                     className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-emerald-400 font-semibold text-xs border border-emerald-500/30 transition-all"
@@ -106,7 +106,7 @@ export default function SolarXPage() {
 
                   <span className="text-xs text-slate-400 flex items-center gap-1.5">
                     <Mail className="w-3.5 h-3.5 text-slate-500" />
-                    {COMPANY_PROFILE.contacts.solarHead.email}
+                    {COMPANY_PROFILE.contacts.managingDirector.emails[0]}
                   </span>
                 </div>
               </div>
@@ -116,10 +116,10 @@ export default function SolarXPage() {
                 <div className="p-6 rounded-2xl bg-slate-900/90 border border-emerald-500/30 backdrop-blur-md relative space-y-3">
                   <Quote className="w-8 h-8 text-emerald-400/40" />
                   <p className="text-xs sm:text-sm text-slate-200 italic leading-relaxed">
-                    “SolarX Energy completely transformed our approach to energy — from installation to support, everything was seamless and efficient.”
+                    Surveying, soil testing, solar installation and commissioning—all coordinated by Harsh Survey Consultancy.
                   </p>
                   <div className="pt-2 border-t border-slate-800 flex items-center justify-between">
-                    <span className="text-xs font-bold text-white">— Ravi Jaiswal</span>
+                    <span className="text-xs font-bold text-white">Survey to commissioning</span>
                     <span className="text-[10px] text-emerald-400 font-semibold px-2 py-0.5 rounded bg-emerald-500/10">
                       Verified Client
                     </span>

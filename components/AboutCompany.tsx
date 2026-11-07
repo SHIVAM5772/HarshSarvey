@@ -31,7 +31,7 @@ export default function AboutCompany({
     },
     {
       title: "Clean Energy Acceleration",
-      desc: "End-to-end solar farm layout optimization, shadow modeling, and rapid commissioning through SolarX Energy.",
+      desc: "End-to-end solar farm layout optimization, shadow modeling, and rapid commissioning through Harsh Survey Consultancy.",
     },
     {
       title: "Rigorous Govt. Standards",
@@ -49,7 +49,7 @@ export default function AboutCompany({
             <span>ESTABLISHED 2009 • AGRA, UTTAR PRADESH</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-            About Harsh Survey Consultancy & SolarX Energy
+            About Harsh Survey Consultancy
           </h2>
           <p className="mt-4 text-slate-300 text-base leading-relaxed">
             A premier engineering consultancy delivering high-accuracy spatial intelligence,
@@ -73,10 +73,10 @@ export default function AboutCompany({
               </p>
               <p className="p-4 rounded-xl bg-slate-900/80 border-l-4 border-emerald-500 text-slate-200">
                 <strong className="text-emerald-400 font-bold block mb-1">
-                  SolarX Energy Synergy — Complete Ground to Grid Delivery:
+                  Solar Engineering — Complete Ground to Grid Delivery:
                 </strong>
-                Recognizing the rapid expansion of renewable energy across India, our specialized clean energy division,{" "}
-                <span className="text-white font-semibold">SolarX Energy Solutions (led by Bhupendra Singh)</span>, provides end-to-end solar site development — from 5x5m topographical contouring and geotechnical Safe Bearing Capacity (SBC) soil testing to solar plant installation and commissioning.
+                Recognizing the rapid expansion of renewable energy across India,{" "}
+                <span className="text-white font-semibold">Harsh Survey Consultancy</span> provides end-to-end solar site development — from 5x5m topographical contouring and geotechnical Safe Bearing Capacity (SBC) soil testing to solar plant installation and commissioning.
               </p>
             </div>
 
@@ -141,8 +141,8 @@ export default function AboutCompany({
                   <span className="text-amber-400 font-semibold">Ram Kumar (Civil Engg)</span>
                 </div>
                 <div className="flex items-start justify-between py-1.5 border-b border-slate-800/60">
-                  <span className="text-slate-400">Clean Energy Lead</span>
-                  <span className="text-emerald-400 font-semibold">Bhupendra Singh (SolarX)</span>
+                  <span className="text-slate-400">Solar Services</span>
+                  <span className="text-emerald-400 font-semibold">Harsh Survey Consultancy</span>
                 </div>
                 <div className="flex items-start justify-between py-1.5 border-b border-slate-800/60">
                   <span className="text-slate-400">Survey Instruments</span>

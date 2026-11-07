@@ -6,22 +6,19 @@ import {
   Send,
   MessageSquare,
   CheckCircle,
-  Phone,
   Compass,
-  Sun,
-  ShieldCheck,
 } from "lucide-react";
+import { submitInquiry } from "@/lib/submit-inquiry";
 import { COMPANY_PROFILE, SERVICES } from "@/data/surveyData";
 
-export default function QuoteModal({
-  isOpen,
-  onClose,
-  initialService,
-}: {
-  isOpen: boolean;
-  onClose: () => void;
-  initialService?: string;
-}) {
+type QuoteModalProps = { isOpen: boolean; onClose: () => void; initialService?: string };
+
+export default function QuoteModal({ isOpen, onClose, initialService }: QuoteModalProps) {
+  if (!isOpen) return null;
+  return <QuoteForm key={initialService || "general"} onClose={onClose} initialService={initialService} />;
+}
+
+function QuoteForm({ onClose, initialService }: Omit<QuoteModalProps, "isOpen">) {
   const [service, setService] = useState(initialService || "Topographical & Close Contour Surveys");
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -29,15 +26,11 @@ export default function QuoteModal({
   const [location, setLocation] = useState("");
   const [details, setDetails] = useState("");
   const [submitted, setSubmitted] = useState(false);
-
-  if (!isOpen) return null;
-
-  const isSolar = service.toLowerCase().includes("solar") || service.toLowerCase().includes("soil");
+  const [saving, setSaving] = useState(false);
+  const [error, setError] = useState("");
 
   const handleWhatsApp = () => {
-    const contact = isSolar
-      ? COMPANY_PROFILE.contacts.solarHead.whatsapp
-      : COMPANY_PROFILE.contacts.managingDirector.whatsapp;
+    const contact = COMPANY_PROFILE.contacts.managingDirector.whatsapp;
 
     const text = encodeURIComponent(
       `*URGENT SURVEY / QUOTATION REQUEST*\n` +
@@ -54,9 +47,15 @@ export default function QuoteModal({
     window.open(`https://wa.me/${contact}?text=${text}`, "_blank");
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    if (saving) return;
+    setSaving(true); setError("");
+    try {
+      await submitInquiry({ name, phone, organization, service, location, message: details, email: "", source: "quote" });
+      setSubmitted(true);
+    } catch (reason) { setError(reason instanceof Error ? reason.message : "Your enquiry could not be saved. Please try WhatsApp."); }
+    finally { setSaving(false); }
   };
 
   return (
@@ -70,7 +69,7 @@ export default function QuoteModal({
             </div>
             <div>
               <h3 className="text-base font-bold text-white">Request Site Survey / Quote</h3>
-              <p className="text-[11px] text-slate-400">Harsh Survey Consultancy & SolarX Energy</p>
+              <p className="text-[11px] text-slate-400">Harsh Survey Consultancy</p>
             </div>
           </div>
           <button
@@ -88,7 +87,7 @@ export default function QuoteModal({
               <CheckCircle className="w-12 h-12 text-emerald-400 mx-auto" />
               <h4 className="text-lg font-bold text-white">Quotation Request Registered!</h4>
               <p className="text-xs text-slate-300">
-                Our survey directors (Ram Kumar / Bhupendra Singh) have been alerted and will contact you via phone/WhatsApp within 2 hours.
+                Your enquiry has been saved successfully. The Harsh Survey team will review it and contact you using the details provided.
               </p>
               <div className="pt-2">
                 <button
@@ -179,12 +178,14 @@ export default function QuoteModal({
               </div>
 
               <div className="pt-2 space-y-2">
+                {error && <p role="alert" className="rounded-lg border border-red-500/40 p-3 text-xs text-red-500 leading-relaxed">{error}</p>}
                 <button
                   type="submit"
+                  disabled={saving}
                   className="w-full py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all shadow-md shadow-amber-500/20"
                 >
                   <Send className="w-3.5 h-3.5" />
-                  <span>Submit Inquiry</span>
+                  <span>{saving ? "Saving enquiry…" : "Submit Inquiry"}</span>
                 </button>
 
                 <button

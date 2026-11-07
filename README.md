@@ -1,4 +1,13 @@
-# Harsh Survey Consultancy & SolarX Energy Solutions
+# Harsh Survey Consultancy
+
+## Admin login and Google Sheets enquiries
+
+The `/admin` dashboard accepts only the Google-verified account `sc698027@gmail.com`.
+Quote and contact forms save to a private Google Sheet through server API routes.
+**Google Cloud setup is still required before login and saving can work.**
+Follow [the setup guide](docs/GOOGLE_SETUP.md) and fill `.env.local` using `.env.example`.
+Never commit private keys. Without configuration, submissions show a useful error rather than a fake success message.
+Run `npm test` for access-policy, input-validation and request-security checks (Node.js 22.18+).
 
 Official Multi-Page Corporate Portfolio built with **Next.js (App Router)**, **TypeScript**, and **Tailwind CSS**.
 
@@ -11,14 +20,23 @@ Harsh Survey Consultancy has been organized into dedicated, individual pages:
 | Route | Page Name | Purpose & Highlights |
 | :--- | :--- | :--- |
 | **`/`** | **Home** | High-impact hero, real stats counter, consulting summary, featured projects, scope estimator |
-| **`/about`** | **About Us** | 15+ years history since 2009, founder Ram Kumar MD, SolarX partnership with Bhupendra Singh, core values, legal entity specs |
+| **`/about`** | **About Us** | 15+ years history since 2009, founder Ram Kumar MD, solar engineering services, core values, legal entity specs |
 | **`/services`** | **Services Spectrum** | Deep-dive into all 8+ services: Topography, Highways/PMGSY DPR, Pipelines, Railways, Transmission, Urban Drainage & CADD |
-| **`/solarx`** | **SolarX Division** | Clean Energy & Geotechnical Hub: Turnkey Solar Plant Installation, 5x5m Gridding, certified Soil SBC Testing, MMS Pile Pull-Out |
+| **`/solar`** | **Solar Services** | Clean Energy & Geotechnical Hub: Turnkey Solar Plant Installation, 5x5m Gridding, certified Soil SBC Testing, MMS Pile Pull-Out |
 | **`/projects`** | **Project Database** | 50+ landmark projects with live search bar, category filters (Solar, Highways, Rail, Gas, Transmission), and modal preview |
 | **`/equipment`** | **Hardware Fleet** | Hemisphere DGPS, 6x Topcon Total Stations, Sokkia Auto Levels, Magellan GPS, Soil Core Rigs & CAD Workstations |
-| **`/team`** | **Our Team** | Detailed bios of Ram Kumar (MD), Bhupendra Singh (Solar), Rama Shankar Upreti, Suraj Singh, Senior Surveyors |
+| **`/team`** | **Our Team** | Detailed bios of Ram Kumar (MD), Rama Shankar Upreti, Suraj Singh, Senior Surveyors |
 | **`/clients`** | **Clients & PSUs** | PSU & MNC partnerships (L&T Power, GAIL, Sterling & Wilson, PGCIL, PMGSY, UP Jal Nigam, HFCL) & compliance norms |
 | **`/contact`** | **Contact & Quote** | Interactive Scope & Turnaround Estimator (with 1-click WhatsApp quote), Agra HQ address & direct hotline |
+
+---
+
+## 🌓 Dark Mode & Light Mode
+
+- **Dual-Theme Support**: Instant 1-click toggle between Dark Mode (Default Luxury Deep Navy/Slate) and Light Mode (Clean Architectural Ivory/White).
+- **Persistent Preference**: Automatically saves your choice in `localStorage` (`harsh-theme`).
+- **Anti-FOUC**: Pre-hydration script prevents any flash of incorrect theme on initial page load.
+- **Accessible Toggle Button**: Located in the top navigation bar and mobile drawer.
 
 ---
 
@@ -41,5 +59,4 @@ npm start
 ## 📍 Registered Head Office
 - **Address**: Harsh House, Plot No: 169, VPO: Deori, Deori Agra, Uttar Pradesh - 282009, India
 - **Contact (Ram Kumar - MD)**: +91 9411692001, +91 7351982876
-- **Contact (Bhupendra Singh - SolarX)**: +91 9305357363
-- **Emails**: harshsurveyconsultancy@gmail.com | ram2010agra@gmail.com | energysolarx07@gmail.com
+- **Emails**: harshsurveyconsultancy@gmail.com | ram2010agra@gmail.com

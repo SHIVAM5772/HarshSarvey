@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import Hero from "@/components/Hero";
 import AboutCompany from "@/components/AboutCompany";
-import SolarXSpotlight from "@/components/SolarXSpotlight";
+import SolarSpotlight from "@/components/SolarSpotlight";
 import TechnicalWorkflow from "@/components/TechnicalWorkflow";
 import QuoteCalculator from "@/components/QuoteCalculator";
 import ClientsSection from "@/components/ClientsSection";
@@ -148,8 +148,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SolarX Clean Energy Spotlight */}
-      <SolarXSpotlight
+      {/* Solar & Clean Energy Spotlight */}
+      <SolarSpotlight
         onOpenSolarQuote={() => handleOpenQuoteWithService("Solar Power Plant Survey & Installation")}
       />
 

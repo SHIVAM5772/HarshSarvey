@@ -45,7 +45,7 @@ export interface TeamMember {
 
 export const COMPANY_PROFILE = {
   name: "HARSH SURVEY CONSULTANCY",
-  divisionSolar: "SolarX Energy Solutions",
+  divisionSolar: "Harsh Survey Consultancy — Solar Services",
   tagline: "Survey, Planning, Drawing, Geotechnical Investigation & Solar Engineering",
   subheading:
     "Empowering Nation-Building Infrastructure with Millimeter-Precision Topography, Geodesic Alignments, DGPS/Total Station Technology & Turnkey Solar Farm Development.",
@@ -64,13 +64,6 @@ export const COMPANY_PROFILE = {
       phones: ["+91 9411692001", "+91 7351982876"],
       emails: ["harshsurveyconsultancy@gmail.com", "ram2010agra@gmail.com"],
       whatsapp: "919411692001",
-    },
-    solarHead: {
-      name: "Bhupendra Singh",
-      title: "Head - SolarX Energy Solutions",
-      phone: "+91 9305357363",
-      email: "energysolarx07@gmail.com",
-      whatsapp: "919305357363",
     },
   },
   stats: [
@@ -129,11 +122,11 @@ export const SERVICES: ServiceItem[] = [
       "Utility-scale solar ground survey (Phalodi 22MW, Susner 10MW, Agar 5MW)",
       "High density 5x5m spot level gridding for cut/fill balance & drainage",
       "Piling coordinates layout and MMS table alignment with Total Station",
-      "Rooftop & ground-mount installation, wiring, inverter & commissioning (SolarX)",
+      "Rooftop & ground-mount installation, wiring, inverter & commissioning",
     ],
     equipmentUsed: ["Hemisphere DGPS", "Topcon GTS", "Global Mapper", "Laser Levels"],
     image:
-      "https://images.unsplash.com/photo-1509391365360-2e959784a276?auto=format&fit=crop&w=1000&q=80",
+      "/images/solar-farm.jpg",
   },
   {
     id: "geotechnical-soil-testing",
@@ -235,7 +228,7 @@ export const PROJECTS: ProjectItem[] = [
     year: "2013",
     metric: "22 MW / 120+ Acres",
     image:
-      "https://images.unsplash.com/photo-1509391365360-2e959784a276?auto=format&fit=crop&w=800&q=80",
+      "/images/solar-farm.jpg",
     featured: true,
   },
   {
@@ -518,16 +511,6 @@ export const TEAM: TeamMember[] = [
     joinedYear: "Founder (2009)",
     specialization: "DGPS Networks, Geodesic Computations & Highway Alignment",
     avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80",
-  },
-  {
-    name: "Bhupendra Singh",
-    designation: "Head - Clean Energy Division",
-    role: "SolarX Energy Leadership, Soil Testing & Solar EPC Execution",
-    qualification: "Renewable Energy & Field Management",
-    experienceYears: 10,
-    joinedYear: "Solar Division Lead",
-    specialization: "Solar Plant Layout, SBC Soil Testing & Commissioning",
-    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80",
   },
   {
     name: "Rama Shankar Upreti",

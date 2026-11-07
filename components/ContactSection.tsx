@@ -13,10 +13,13 @@ import {
   Compass,
   Building,
 } from "lucide-react";
+import { submitInquiry } from "@/lib/submit-inquiry";
 import { COMPANY_PROFILE } from "@/data/surveyData";
 
 export default function ContactSection() {
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [saving, setSaving] = useState(false);
+  const [error, setError] = useState("");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -25,9 +28,15 @@ export default function ContactSection() {
     message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setFormSubmitted(true);
+    if (saving) return;
+    setSaving(true); setError("");
+    try {
+      await submitInquiry({ ...formData, organization: "", location: "", source: "contact" });
+      setFormSubmitted(true);
+    } catch (reason) { setError(reason instanceof Error ? reason.message : "Your enquiry could not be saved. Please contact us on WhatsApp."); }
+    finally { setSaving(false); }
   };
 
   return (
@@ -40,7 +49,7 @@ export default function ContactSection() {
             <span>LET’S CONNECT FOR YOUR NEXT INFRASTRUCTURE PROJECT</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-            Contact Harsh Survey & SolarX
+            Contact Harsh Survey Consultancy
           </h2>
           <p className="mt-3 text-slate-300 text-sm sm:text-base">
             Reach out to our leadership directly for survey quotes, technical inquiries, or immediate field team mobilization across India.
@@ -103,7 +112,7 @@ export default function ContactSection() {
             </a>
           </div>
 
-          {/* SolarX Clean Energy Card */}
+          {/* Solar & Clean Energy Card */}
           <div className="p-6 rounded-2xl bg-slate-950/80 border border-emerald-500/30 hover:border-emerald-500/50 transition-all space-y-4">
             <div className="flex items-center justify-between">
               <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-400 px-2 py-0.5 rounded bg-emerald-500/10">
@@ -113,39 +122,39 @@ export default function ContactSection() {
             </div>
 
             <div>
-              <h3 className="text-lg font-bold text-white">Bhupendra Singh</h3>
-              <p className="text-xs text-emerald-400 font-medium">Head - SolarX Energy Solutions</p>
+              <h3 className="text-lg font-bold text-white">Harsh Survey Consultancy</h3>
+              <p className="text-xs text-emerald-400 font-medium">Surveying & Solar Services</p>
             </div>
 
             <div className="space-y-2 text-xs">
               <div className="flex items-center gap-2">
                 <Phone className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                <a href={`tel:${COMPANY_PROFILE.contacts.solarHead.phone}`} className="text-white hover:text-emerald-400 font-medium">
-                  {COMPANY_PROFILE.contacts.solarHead.phone}
+                <a href={`tel:${COMPANY_PROFILE.contacts.managingDirector.phones[0]}`} className="text-white hover:text-emerald-400 font-medium">
+                  {COMPANY_PROFILE.contacts.managingDirector.phones[0]}
                 </a>
               </div>
 
               <div className="flex items-center gap-2">
                 <Mail className="w-3.5 h-3.5 text-slate-400 shrink-0" />
-                <a href={`mailto:${COMPANY_PROFILE.contacts.solarHead.email}`} className="text-slate-300 hover:text-emerald-400 truncate">
-                  {COMPANY_PROFILE.contacts.solarHead.email}
+                <a href={`mailto:${COMPANY_PROFILE.contacts.managingDirector.emails[0]}`} className="text-slate-300 hover:text-emerald-400 truncate">
+                  {COMPANY_PROFILE.contacts.managingDirector.emails[0]}
                 </a>
               </div>
 
               <div className="flex items-center gap-2 text-slate-400">
                 <Clock className="w-3.5 h-3.5 text-slate-500 shrink-0" />
-                <span>Socials: @Solarxenergy (FB / Insta / LinkedIn)</span>
+                <span>Surveying & solar project enquiries</span>
               </div>
             </div>
 
             <a
-              href={`https://wa.me/${COMPANY_PROFILE.contacts.solarHead.whatsapp}`}
+              href={`https://wa.me/${COMPANY_PROFILE.contacts.managingDirector.whatsapp}`}
               target="_blank"
               rel="noreferrer"
               className="w-full py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all block text-center shadow-lg shadow-emerald-500/20"
             >
               <MessageSquare className="w-3.5 h-3.5" />
-              <span>WhatsApp Bhupendra Singh</span>
+              <span>WhatsApp Harsh Survey</span>
             </a>
           </div>
 
@@ -186,7 +195,7 @@ export default function ContactSection() {
           <div className="text-center mb-6">
             <h3 className="text-xl font-bold text-white">Send Direct Site Survey Request</h3>
             <p className="text-xs text-slate-400 mt-1">
-              Our engineering office will contact you within 2-4 hours with preliminary feasibility notes.
+              Share your requirements and our engineering office will get in touch to discuss your project.
             </p>
           </div>
 
@@ -195,7 +204,7 @@ export default function ContactSection() {
               <CheckCircle className="w-10 h-10 text-emerald-400 mx-auto" />
               <h4 className="text-lg font-bold text-white">Inquiry Received Successfully!</h4>
               <p className="text-xs text-slate-300 max-w-md mx-auto">
-                Thank you! Ram Kumar and the Harsh Survey technical team have received your request and will connect with you shortly.
+                Thank you! Your enquiry has been saved successfully for the Harsh Survey team to review.
               </p>
               <button
                 onClick={() => setFormSubmitted(false)}
@@ -206,6 +215,7 @@ export default function ContactSection() {
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
+              {error && <p role="alert" className="rounded-lg border border-red-500/40 p-3 text-xs text-red-500 leading-relaxed">{error}</p>}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="text-xs text-slate-300 block mb-1">Your Full Name *</label>
@@ -251,7 +261,7 @@ export default function ContactSection() {
                   >
                     <option>Highway / Road DPR Survey</option>
                     <option>Topographical & Close Contour Survey</option>
-                    <option>Solar Power Plant Survey & Installation (SolarX)</option>
+                    <option>Solar Power Plant Survey & Installation</option>
                     <option>Geotechnical Soil Testing & SBC Report</option>
                     <option>Oil & Gas Pipeline Alignment</option>
                     <option>Railway Line / Container Yard Survey</option>
@@ -274,10 +284,11 @@ export default function ContactSection() {
 
               <button
                 type="submit"
+                disabled={saving}
                 className="w-full py-3.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all shadow-lg shadow-amber-500/20"
               >
                 <Send className="w-4 h-4" />
-                <span>Submit Technical Survey Inquiry</span>
+                <span>{saving ? "Saving enquiry…" : "Submit Technical Survey Inquiry"}</span>
               </button>
             </form>
           )}
