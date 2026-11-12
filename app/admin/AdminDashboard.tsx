@@ -1,14 +1,19 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, type FormEvent } from "react";
 import Link from "next/link";
-import { signIn, signOut } from "next-auth/react";
-import { ArrowUpRight, CheckCircle2, ClipboardList, Clock3, LockKeyhole, LogOut, MessageSquare, Phone, RefreshCw, Search, ShieldCheck } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { signIn } from "next-auth/react";
+import { ArrowUpRight, CheckCircle2, ClipboardList, Clock3, LockKeyhole, MessageSquare, Phone, RefreshCw, Search, ShieldCheck, Receipt, FileText } from "lucide-react";
 import { INQUIRY_STATUSES, type Inquiry, type InquiryStatus } from "@/lib/inquiry-validation";
 import styles from "./admin.module.css";
 
 type Props = {
+  username: string | null;
   email: string | null;
+  googleReady: boolean;
+  passwordChanged: boolean;
+  emailChanged: boolean;
   authReady: boolean;
   sheetsReady: boolean;
   initialInquiries: Inquiry[];
@@ -23,6 +28,7 @@ function formatDate(value: string) {
 }
 
 export default function AdminDashboard(props: Props) {
+  const router = useRouter();
   const [inquiries, setInquiries] = useState(props.initialInquiries);
   const [error, setError] = useState(props.initialError);
   const [search, setSearch] = useState("");
@@ -57,24 +63,43 @@ export default function AdminDashboard(props: Props) {
     finally { setUpdating(null); }
   }
 
-  async function login() {
+  async function login(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const form = new FormData(event.currentTarget);
     setAuthBusy(true); setError("");
-    try { await signIn("google", { callbackUrl: "/admin" }); }
-    catch { setError("Google sign-in could not start. Please try again."); setAuthBusy(false); }
+    try {
+      const result = await signIn("credentials", { username: form.get("username"), password: form.get("password"), redirect: false, callbackUrl: "/admin" });
+      if (result?.ok && !result.error) router.refresh();
+      else setError(result?.error === "CredentialsSignin" ? "Invalid username or password, or too many attempts. Please try again later." : "Login is temporarily unavailable. Please try again later.");
+    } catch { setError("Login could not complete. Please try again."); }
+    finally { setAuthBusy(false); }
   }
 
-  if (!props.email) return (
+  if (!props.username) return (
     <section className={`${styles.page} ${styles.loginPage}`}>
       <div className={styles.loginCard}>
         <div className={styles.lock}><LockKeyhole size={27} /></div>
         <span className={styles.eyebrow}>HARSH SURVEY CONSULTANCY</span>
         <h1>Welcome to your<br />enquiry workspace.</h1>
-        <p>Sign in with your authorized Google account to view customer enquiries and manage follow-ups.</p>
-        {(props.loginError || error) && <div role="alert" className={styles.error}>{error || "Access denied or sign-in was not completed. Please use the authorized admin Google account."}</div>}
-        {!props.authReady && <div className={styles.setup}><strong>Google sign-in setup is pending</strong><p>The website owner needs to finish the Google Cloud setup before this dashboard can be opened.</p></div>}
-        <button className={styles.primaryButton} onClick={login} disabled={!props.authReady || authBusy}>
-          <ShieldCheck size={18} /> {authBusy ? "Opening Google…" : "Continue with Google"}
-        </button>
+        <p>Sign in with your admin Google account or username and password to manage customer enquiries.</p>
+        {props.passwordChanged && <p className={styles.profileSuccess} role="status">Password changed successfully. Please sign in again.</p>}
+        {props.emailChanged && <p className={styles.profileSuccess} role="status">Email verified and updated. Please sign in again.</p>}
+        {(props.loginError || error) && <div role="alert" className={styles.error}>{error || "Access denied or sign-in was not completed. Please try again."}</div>}
+        {!props.authReady && <div className={styles.setup}><strong>Admin login setup is pending</strong><p>Please contact the website administrator to enable login.</p></div>}
+        <form className={styles.loginForm} onSubmit={login}>
+          <label htmlFor="admin-username">Username<input id="admin-username" name="username" autoComplete="username" required minLength={3} maxLength={64} disabled={authBusy} /></label>
+          <label htmlFor="admin-password">Password<input id="admin-password" name="password" type="password" autoComplete="current-password" required maxLength={256} disabled={authBusy} /></label>
+          <button type="submit" className={styles.primaryButton} disabled={!props.authReady || authBusy}>
+            <ShieldCheck size={18} /> {authBusy ? "Signing in…" : "Sign in"}
+          </button>
+        </form>
+        <div className={styles.loginDivider}>or</div>
+        <button type="button" className={`${styles.secondaryButton} ${styles.googleButton}`} disabled={!props.googleReady || authBusy} onClick={async () => {
+          setAuthBusy(true); setError("");
+          try { await signIn("google", { callbackUrl: "/admin" }); }
+          catch { setError("Google sign-in could not start. Please try again."); setAuthBusy(false); }
+        }}>Continue with Google</button>
+        {!props.googleReady && <p className={styles.profileHint}>Google sign-in is currently unavailable. Use your username and password.</p>}
         <small><LockKeyhole size={12} /> Access is verified securely on the server.</small>
         <Link href="/" className={styles.homeLink}>Back to website <ArrowUpRight size={14} /></Link>
       </div>
@@ -93,7 +118,7 @@ export default function AdminDashboard(props: Props) {
       <div className={styles.container}>
         <div className={styles.heading}>
           <div><span className={styles.eyebrow}><ShieldCheck size={14} /> ADMIN WORKSPACE</span><h1>Enquiries, in one place.</h1><p>Manage survey and solar enquiries from your website.</p></div>
-          <div className={styles.account}><span>{props.email}</span><button className={styles.secondaryButton} onClick={() => signOut({ callbackUrl: "/admin" })}><LogOut size={15} /> Sign out</button></div>
+          <div className={styles.controls}><Link className={styles.secondaryButton} href="/admin/documents?kind=bill"><Receipt size={16} />Create bill</Link><Link className={styles.primaryButton} href="/admin/documents?kind=quotation"><FileText size={16} />Create quotation</Link></div>
         </div>
         {!props.sheetsReady && <div className={styles.setup}><strong>Connect Google Sheets to start collecting enquiries</strong><p>The Google Sheets connection has not been configured yet. No sample customer data is displayed.</p></div>}
         <div className={styles.stats}>{stats.map(stat => <div className={styles.stat} key={stat.label}><stat.icon size={19} /><strong>{stat.value}</strong><span>{stat.label}</span></div>)}</div>

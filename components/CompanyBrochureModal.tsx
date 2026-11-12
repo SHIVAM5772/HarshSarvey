@@ -1,19 +1,13 @@
 "use client";
 
 import React from "react";
+import { createPortal } from "react-dom";
 import {
   X,
   Printer,
-  FileCheck,
-  Compass,
-  Phone,
-  Mail,
-  MapPin,
-  CheckCircle2,
   ShieldCheck,
-  Download,
 } from "lucide-react";
-import { COMPANY_PROFILE, EQUIPMENT, TEAM, PROJECTS } from "@/data/surveyData";
+import { EQUIPMENT, TEAM, PROJECTS } from "@/data/surveyData";
 
 export default function CompanyBrochureModal({
   isOpen,
@@ -28,11 +22,11 @@ export default function CompanyBrochureModal({
     window.print();
   };
 
-  return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/85 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 animate-in fade-in">
-      <div className="bg-slate-900 border border-slate-700 w-full max-w-4xl rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+  return createPortal(
+    <div className="brochure-overlay fixed inset-0 z-50 overflow-y-auto bg-black/85 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 animate-in fade-in">
+      <div className="brochure-dialog bg-slate-900 border border-slate-700 w-full max-w-4xl rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
         {/* Top Control Bar */}
-        <div className="p-4 bg-slate-950 border-b border-slate-800 flex items-center justify-between text-xs">
+        <div className="brochure-controls p-4 bg-slate-950 border-b border-slate-800 flex items-center justify-between text-xs">
           <div className="flex items-center gap-2">
             <ShieldCheck className="w-4 h-4 text-amber-400" />
             <span className="font-bold text-white uppercase tracking-wider">
@@ -58,7 +52,7 @@ export default function CompanyBrochureModal({
         </div>
 
         {/* Printable Document Content */}
-        <div className="overflow-y-auto p-6 sm:p-10 space-y-8 bg-slate-900 text-slate-200 print:bg-white print:text-black">
+        <div id="company-brochure-document" className="brochure-document overflow-y-auto p-6 sm:p-10 space-y-8 bg-slate-900 text-slate-200 print:bg-white print:text-black">
           {/* Header */}
           <div className="border-b border-slate-700 pb-6 print:border-black flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
             <div className="flex items-center gap-4">
@@ -212,7 +206,8 @@ export default function CompanyBrochureModal({
           </div>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 }
 

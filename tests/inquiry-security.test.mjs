@@ -1,20 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { canSignInAsAdmin, isAdminEmail } from "../lib/admin-policy.ts";
 import { validateInquiry, isInquiryStatus } from "../lib/inquiry-validation.ts";
 import { allowSubmission, isSameOrigin } from "../lib/request-security.ts";
-
-test("admin access requires the exact Google-verified allowlisted email", () => {
-  assert.equal(canSignInAsAdmin("google", { email: "sc698027@gmail.com", email_verified: true }), true);
-  for (const email of ["other@gmail.com", "sc698027@gmail.com.attacker.test", "sc698027+admin@gmail.com", undefined]) {
-    assert.equal(canSignInAsAdmin("google", { email, email_verified: true }), false);
-  }
-  assert.equal(canSignInAsAdmin("google", { email: "sc698027@gmail.com", email_verified: false }), false);
-  assert.equal(canSignInAsAdmin("google", { email: "sc698027@gmail.com", email_verified: "true" }), false);
-  assert.equal(canSignInAsAdmin("credentials", { email: "sc698027@gmail.com", email_verified: true }), false);
-  assert.equal(canSignInAsAdmin("google", null), false);
-  assert.equal(isAdminEmail("SC698027@gmail.com"), true);
-});
 
 const valid = { name: "Test Customer", phone: "+91 98765 43210", service: "Solar survey", source: "quote" };
 test("valid form input is trimmed and optional fields are normalized", () => {

@@ -255,6 +255,25 @@ html:not(.dark) tbody tr:hover {
 }
 
 /* Shared navigation and landing-page design */
+@media print {
+  @page { size: A4 portrait; margin: 12mm; }
+  html:has(#company-brochure-document), html:has(#company-brochure-document) body { background: #fff !important; color: #172033 !important; height: auto !important; min-height: 0 !important; overflow: visible !important; color-scheme: light !important; }
+  body:has(.brochure-overlay) { margin: 0 !important; padding: 0 !important; }
+  body:has(.brochure-overlay) > :not(.brochure-overlay) { display: none !important; }
+  .brochure-controls { display: none !important; }
+  .brochure-overlay, .brochure-dialog, .brochure-document { display: block !important; position: static !important; inset: auto !important; width: 100% !important; max-width: none !important; height: auto !important; min-height: 0 !important; max-height: none !important; overflow: visible !important; padding: 0 !important; margin: 0 !important; border: 0 !important; border-radius: 0 !important; box-shadow: none !important; background: #fff !important; backdrop-filter: none !important; transform: none !important; animation: none !important; }
+  .brochure-document { print-color-adjust: exact; -webkit-print-color-adjust: exact; font-size: 10px; }
+  #company-brochure-document, #company-brochure-document * { color: #172033 !important; background: transparent !important; border-color: #dbe3ec !important; box-shadow: none !important; text-shadow: none !important; }
+  .brochure-document > * + * { margin-top: 22px !important; }
+  .brochure-document h1 { font-size: 22px !important; }
+  #company-brochure-document h2 { color: #b96908 !important; break-after: avoid-page; }
+  .brochure-document .overflow-x-auto { overflow: visible !important; }
+  .brochure-document table { width: 100%; border-collapse: collapse; }
+  #company-brochure-document thead { display: table-header-group; background: #f1f5f9 !important; }
+  .brochure-document tr, .brochure-document img, .brochure-document .grid > * { break-inside: avoid; }
+  .brochure-document th, .brochure-document td { padding: 7px !important; overflow-wrap: anywhere; }
+}
+
 html.dark { color-scheme: dark; }
 :root { --accent: #b96908; --header-bg: rgba(255,255,255,.94); }
 html.dark { --accent: #fbbf24; --header-bg: rgba(7,14,27,.94); }
@@ -279,6 +298,8 @@ html.dark { --accent: #fbbf24; --header-bg: rgba(7,14,27,.94); }
 html.dark .desktop-nav .solar-nav-link { color: #34d399; }
 .nav-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
 .nav-actions button { cursor: pointer; }
+.workspace-button { display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 10px; background: var(--bg-card); color: var(--text-secondary); border: 1px solid var(--border-color); flex-shrink: 0; }
+.workspace-button:hover, .workspace-button[aria-current] { color: var(--accent); border-color: var(--accent); background: var(--bg-card-muted); }
 .profile-button, .quote-button, .menu-button { display: inline-flex; align-items: center; justify-content: center; gap: 8px; border-radius: 10px; padding: 11px 14px; font-size: 12px; font-weight: 700; white-space: nowrap; }
 .profile-button, .menu-button { background: var(--bg-card); color: var(--text-primary); border: 1px solid var(--border-color); }
 .quote-button { background: #fbbf24; color: #101827; box-shadow: 0 4px 12px #f59e0b25; border: 1px solid #f59e0b; }
@@ -337,6 +358,7 @@ button:not(:disabled), a { touch-action: manipulation; }
   .brand-lockup { gap: 8px; }
   .brand-lockup img { width: 38px; height: 38px; }
   .nav-actions { gap: 5px; }
+  .workspace-button { width: 36px; height: 36px; }
   .profile-button, .nav-actions .quote-button { display: none; }
   .hero-section { padding-block: 36px; }
   .hero-copy > .inline-flex { font-size: 8px !important; gap: 6px; padding-inline: 10px; }
@@ -347,6 +369,7 @@ button:not(:disabled), a { touch-action: manipulation; }
   .image-label span { font-size: 8px; }
   .hero-copy > div:last-child { gap: 12px; flex-wrap: wrap; }
 }
+@media (max-width: 420px) { .has-admin .brand-copy { display: none; } }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
 }

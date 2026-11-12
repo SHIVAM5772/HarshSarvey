@@ -6,12 +6,14 @@ import Footer from "@/components/Footer";
 import CompanyBrochureModal from "@/components/CompanyBrochureModal";
 import QuoteModal from "@/components/QuoteModal";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { SessionProvider } from "next-auth/react";
 
 export default function SiteLayout({ children }: { children: React.ReactNode }) {
   const [dossierOpen, setDossierOpen] = useState(false);
   const [quoteOpen, setQuoteOpen] = useState(false);
 
   return (
+    <SessionProvider>
     <ThemeProvider>
       <div className="min-h-screen flex flex-col font-sans selection:bg-amber-500 selection:text-slate-950 transition-colors duration-200">
         <Navbar
@@ -37,6 +39,7 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
         />
       </div>
     </ThemeProvider>
+    </SessionProvider>
   );
 }
 

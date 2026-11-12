@@ -60,6 +60,121 @@
 .loginCard .primaryButton { width: 100%; padding: 14px; }
 .loginCard > small { display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 10px; color: var(--text-muted); margin-top: 16px; }
 .loginCard .error { margin-inline: 0; }
+.loginForm { display: grid; gap: 16px; }
+.loginForm label { display: grid; gap: 8px; font-size: 12px; color: var(--text-secondary); }
+.loginForm input { width: 100%; min-width: 0; border: 1px solid var(--border-color); border-radius: 10px; padding: 12px; background: var(--bg-page); color: var(--text-primary); font-size: 14px; }
+.loginForm input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.loginDivider { display: flex; align-items: center; gap: 12px; margin: 20px 0; color: var(--text-muted); font-size: 12px; }
+.loginDivider::before, .loginDivider::after { content: ""; height: 1px; flex: 1; background: var(--border-color); }
+.googleButton { width: 100%; padding: 13px; }
+.profile { position: relative; flex-shrink: 0; }
+.profileTrigger { list-style: none; cursor: pointer; display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 600; border: 1px solid var(--border-color); border-radius: 30px; padding: 6px 16px 6px 6px; background: var(--bg-card); }
+.profileTrigger::-webkit-details-marker { display: none; }
+.profileName { max-width: 130px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.headerProfile { color: var(--text-primary); }
+.headerProfile .profilePanel { right: 0; left: auto; }
+.headerProfile .profileTrigger { min-height: 42px; padding: 3px 12px 3px 3px; }
+.headerProfile .profilePanel { top: calc(100% + 16px); }
+@media (max-width: 1439px) { .headerProfile .profileName { display: none; } .headerProfile .profileTrigger { padding: 3px; } }
+.profileTrigger:focus-visible, .profileActions button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.avatar { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; color: var(--accent); background: #f59e0b16; }
+.profilePanel { position: absolute; right: 0; top: calc(100% + 12px); width: min(360px, calc(100vw - 32px)); max-height: 75vh; overflow-y: auto; z-index: 30; padding: 22px; border: 1px solid var(--border-color); border-radius: 16px; background: var(--bg-card); box-shadow: 0 16px 48px #0003; }
+.profileIdentity { display: grid; gap: 5px; overflow-wrap: anywhere; border-bottom: 1px solid var(--border-color); padding-bottom: 16px; margin-bottom: 12px; font-size: 14px; }
+.profileIdentity span, .profileIdentity small { color: var(--text-muted); font-size: 12px; }
+.profileActions { display: grid; gap: 6px; }
+.profileActions button, .profileActions a { display: flex; gap: 10px; align-items: center; padding: 12px 8px; border-radius: 8px; color: var(--text-primary); background: transparent; border: 0; text-align: left; cursor: pointer; font-size: 13px; }
+.profileActions button:hover, .profileActions a:hover { background: var(--bg-card-muted); }
+.profilePanel h2 { font-size: 19px; font-weight: 600; margin: 16px 0 8px; }
+.profileHint { font-size: 12px; line-height: 1.7; color: var(--text-muted); margin: 8px 0 16px; }
+.profileSuccess { color: var(--text-primary); background: #10b98115; border: 1px solid #10b98150; border-radius: 8px; padding: 12px; font-size: 12px; line-height: 1.7; }
+.backButton { display: inline-flex; align-items: center; gap: 6px; border: 0; background: transparent; color: var(--text-secondary); cursor: pointer; font-size: 12px; }
+.profileFields { display: grid; gap: 16px; padding: 0; border: 0; min-width: 0; }
+.profilePanel .error { margin: 0; }
+.menuEyebrow { display: block; font-size: 10px; letter-spacing: 1.6px; color: var(--text-muted); margin: 18px 8px 10px; }
+.profileActions .viewProfileLink { border: 1px solid var(--accent); padding: 14px 12px; margin-bottom: 7px; }
+.viewProfileLink svg:last-child { margin-left: auto; }
+.profilePage { padding-top: 28px; }
+.breadcrumb { display: flex; gap: 12px; align-items: center; font-size: 12px; color: var(--text-muted); padding: 0 0 32px; }
+.breadcrumb > span:not(.privateBadge) { color: var(--text-primary); font-weight: 600; }
+.privateBadge { display: flex; align-items: center; gap: 6px; margin-left: auto; color: #059669; }
+.profileGrid { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.25fr) minmax(0, 1fr); align-items: start; gap: 22px; margin-top: 30px; }
+.profileCard { border: 1px solid var(--border-color); border-radius: 18px; background: var(--bg-card); padding: 28px; min-width: 0; }
+.profileCard h2 { font-size: 20px; font-weight: 650; line-height: 1.4; }
+.profileCard h3 { font-size: 15px; font-weight: 600; }
+.identityCard { text-align: center; padding-top: 34px; }
+.profilePortrait { width: 112px; height: 112px; border: 6px solid var(--bg-card); outline: 1px solid var(--border-color); border-radius: 50%; background: #10b98112; color: #059669; display: grid; place-items: center; font-size: 34px; font-weight: 700; margin: 0 auto 24px; box-shadow: 0 8px 28px #00000008; }
+.roleBadge { display: inline-block; margin: 9px 0 20px; padding: 4px 11px; border-radius: 20px; background: #10b98112; color: #059669; font-size: 11px; }
+.editProfileLink { display: flex; justify-content: center; align-items: center; gap: 8px; color: var(--accent); font-size: 12px; margin-bottom: 28px; }
+.contactDetails { border-block: 1px solid var(--border-color); padding: 24px 0; text-align: left; }
+.contactDetails h3 { text-align: center; margin-bottom: 22px; }
+.contactDetails p { display: flex; gap: 10px; align-items: flex-start; margin-top: 17px; color: var(--text-secondary); font-size: 12px; line-height: 1.8; overflow-wrap: anywhere; white-space: pre-wrap; }
+.contactDetails svg { flex-shrink: 0; margin-top: 3px; color: var(--text-muted); }
+.memberSince { margin-top: 22px; color: var(--text-muted); font-size: 11px; }
+.cardHeading { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 24px; }
+.cardHeading > div { flex: 1; min-width: 0; }
+.cardHeading p { font-size: 12px; color: var(--text-muted); line-height: 1.8; margin-top: 6px; }
+.iconButton { display: inline-flex; justify-content: center; align-items: center; padding: 9px; border: 1px solid var(--border-color); border-radius: 9px; color: var(--text-secondary); background: var(--bg-card); cursor: pointer; }
+.detailsTable { width: 100%; border-collapse: collapse; font-size: 12px; }
+.detailsTable th, .detailsTable td { padding: 20px 0; border-bottom: 1px solid var(--border-color); text-align: left; vertical-align: top; line-height: 1.7; }
+.detailsTable th { width: 40%; font-weight: 500; color: var(--text-muted); padding-right: 18px; }
+.detailsTable td { overflow-wrap: anywhere; white-space: pre-wrap; color: var(--text-primary); font-weight: 500; }
+.detailsTable tr:last-child th, .detailsTable tr:last-child td { border-bottom: 0; }
+.missingValue { color: var(--text-muted); font-weight: 400; }
+.securityColumn { display: grid; gap: 22px; }
+.securityIcon { display: grid; place-items: center; padding: 12px; border-radius: 14px; color: #059669; background: #10b98116; }
+.emailStatus { padding: 20px; border: 1px solid var(--border-color); border-radius: 13px; display: grid; gap: 10px; background: #10b98107; overflow-wrap: anywhere; }
+.emailStatus small { color: var(--text-muted); font-size: 11px; }
+.emailStatus strong { font-size: 13px; }
+.emailStatus span { display: flex; gap: 6px; align-items: center; color: #059669; font-size: 11px; line-height: 1.7; }
+.passwordLink { margin-top: 12px; display: flex; width: fit-content; }
+.accountDates { display: grid; gap: 8px; margin: 20px 0; }
+.accountDates span { font-size: 11px; color: var(--text-muted); }
+.accountDates strong { font-size: 12px; font-weight: 500; margin-bottom: 12px; }
+.privateNote { display: flex; align-items: center; gap: 8px; font-size: 11px; color: #059669; }
+.accountFormCard { margin-top: 28px; scroll-margin-top: 100px; }
+.accountFormCard .loginForm { max-width: 850px; }
+.accountFormCard .error { margin: 0; }
+.personalFields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.fullWidth { grid-column: 1 / -1; }
+.loginForm select, .loginForm textarea { width: 100%; border: 1px solid var(--border-color); border-radius: 10px; padding: 12px; background: var(--bg-page); color: var(--text-primary); font: inherit; font-size: 14px; min-width: 0; }
+.loginForm textarea { resize: vertical; }
+.loginForm select:focus-visible, .loginForm textarea:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.emailVerification { display: grid; gap: 12px; padding: 20px; border: 1px solid var(--border-color); border-radius: 12px; background: var(--bg-page); }
+.emailVerification .secondaryButton { width: fit-content; }
+.fieldHint { display: flex; align-items: flex-start; gap: 7px; color: var(--text-muted); font-size: 12px; line-height: 1.7; }
+.fieldHint svg { flex-shrink: 0; margin-top: 3px; }
+.srOnly { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+.documentTabs { display: flex; gap: 10px; margin-bottom: 24px; flex-wrap: wrap; }
+.documentTabs button { display: flex; gap: 9px; align-items: center; border: 1px solid var(--border-color); border-radius: 12px; padding: 14px 20px; background: var(--bg-card); color: var(--text-secondary); cursor: pointer; font-size: 13px; font-weight: 600; }
+.documentTabs .activeDocTab { border-color: var(--accent); background: #f59e0b10; color: var(--accent); }
+.documentForm { margin-top: 24px; }
+.documentForm > fieldset { gap: 22px; }
+.documentFormGrid { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 22px; align-items: start; }
+.documentIssuer { color: var(--text-secondary); font-size: 12px; line-height: 1.9; margin: 15px 0 20px; }
+.billingItems { display: grid; gap: 18px; }
+.billingItem { border: 1px solid var(--border-color); border-radius: 12px; padding: 18px; background: var(--bg-page); }
+.lineItemTitle { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; font-size: 12px; }
+.itemFields { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; align-items: start; }
+.itemDescription { grid-column: 1 / -1; }
+.itemAmount { grid-column: 1 / -1; display: flex; justify-content: flex-end; align-items: center; gap: 14px; font-size: 14px; }
+.itemAmount small { color: var(--text-muted); font-size: 11px; }
+.documentExtra { display: grid; gap: 18px; }
+.amountSummary { display: grid; gap: 14px; margin: 8px 0; font-size: 13px; }
+.amountSummary > div { display: flex; justify-content: space-between; gap: 15px; }
+.amountSummary dt { color: var(--text-muted); }
+.amountSummary dd { font-weight: 600; text-align: right; overflow-wrap: anywhere; }
+.amountSummary .grandTotal { border-block: 1px solid var(--border-color); padding-block: 18px; font-size: 20px; }
+.grandTotal dt { color: var(--text-primary); font-weight: 600; }
+.documentMessage { margin: 16px 0; }
+.savedDocument { display: flex; align-items: center; flex-wrap: wrap; gap: 18px; margin-top: 22px; }
+.savedDocument > div { flex: 1; min-width: 170px; }
+.savedDocument p, .savedDocument small { color: var(--text-muted); font-size: 12px; line-height: 1.8; }
+.documentHistory { margin-top: 32px; }
+.historySelect { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 10px; color: var(--text-primary); padding: 10px 12px; font-size: 12px; }
+@media (max-width: 700px) { .documentFormGrid { grid-template-columns: minmax(0, 1fr); } .itemFields { grid-template-columns: repeat(2, minmax(0, 1fr)); } .documentForm .cardHeading { flex-wrap: wrap; } .heading > .controls { flex-wrap: wrap; } }
+@media (max-width: 1100px) { .profileGrid { grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); } .securityColumn { grid-column: 1 / -1; grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 700px) { .profileGrid, .securityColumn, .personalFields { grid-template-columns: minmax(0, 1fr); } .profileCard { padding: 22px; } .privateBadge { display: none; } .profilePage .controls { flex-wrap: wrap; } .profilePage .heading { gap: 20px; } .detailsTable th { width: 42%; } .profilePage .heading h1 { font-size: 34px; } }
+@media (max-width: 700px) { .profilePanel { left: 0; right: auto; } }
 .homeLink { display: flex; justify-content: center; align-items: center; gap: 5px; color: var(--text-muted); margin-top: 24px; font-size: 12px; }
 @media (max-width: 700px) {
   .page { padding: 32px 16px 48px; }

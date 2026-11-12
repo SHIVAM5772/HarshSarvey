@@ -2,9 +2,10 @@
 
 ## Admin login and Google Sheets enquiries
 
-The `/admin` dashboard accepts only the Google-verified account `sc698027@gmail.com`.
+The `/admin` dashboard supports a MongoDB-backed admin username/password and registered Google accounts. The profile menu lets admins change their password and create another admin.
+Use [admin setup](docs/ADMIN_SETUP.md) to create `RamKumar` in `Harsh.user` with a hashed password.
 Quote and contact forms save to a private Google Sheet through server API routes.
-**Google Cloud setup is still required before login and saving can work.**
+**MongoDB Atlas setup is required for login; Google Sheets setup is required for enquiry saving.**
 Follow [the setup guide](docs/GOOGLE_SETUP.md) and fill `.env.local` using `.env.example`.
 Never commit private keys. Without configuration, submissions show a useful error rather than a fake success message.
 Run `npm test` for access-policy, input-validation and request-security checks (Node.js 22.18+).

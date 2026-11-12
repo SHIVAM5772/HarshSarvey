@@ -3,7 +3,9 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Phone, MapPin, Menu, X, FileText, ArrowUpRight, ShieldCheck } from "lucide-react";
+import { useSession } from "next-auth/react";
+import { Phone, MapPin, Menu, X, FileText, ArrowUpRight, ShieldCheck, LayoutDashboard } from "lucide-react";
+import AdminProfile from "@/app/admin/AdminProfile";
 import { COMPANY_PROFILE } from "@/data/surveyData";
 import ThemeToggle from "./ThemeToggle";
 
@@ -25,6 +27,8 @@ export default function Navbar({ onOpenDossier, onOpenQuote }: {
 }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
+  const { data: session } = useSession();
+  const admin = session?.user?.id && session.user.name ? session.user : null;
 
   useEffect(() => {
     if (!mobileMenuOpen) return;
@@ -46,7 +50,7 @@ export default function Navbar({ onOpenDossier, onOpenQuote }: {
           </div>
         </div>
       </div>
-      <header className="site-header">
+      <header className={`site-header${admin ? " has-admin" : ""}`}>
         <div className="site-container nav-main">
           <Link href="/" className="brand-lockup" aria-label="Harsh Survey Consultancy home" onClick={() => setMobileMenuOpen(false)}>
             <img src="/images/logo.png" alt="Harsh Survey company logo" width={48} height={48} />
@@ -59,8 +63,10 @@ export default function Navbar({ onOpenDossier, onOpenQuote }: {
           </nav>
           <div className="nav-actions">
             <ThemeToggle />
-            <button className="profile-button" onClick={onOpenDossier} title="View company profile"><FileText size={16} /><span>Profile</span></button>
+            {!admin && <button className="profile-button" onClick={onOpenDossier} title="View company profile"><FileText size={16} /><span>Profile</span></button>}
+            {admin && <Link href="/admin" className="workspace-button" aria-label="Admin workspace" title="Admin workspace" aria-current={pathname === "/admin" ? "page" : undefined}><LayoutDashboard size={19} /></Link>}
             <button className="quote-button" onClick={onOpenQuote}>Get a quote<ArrowUpRight size={16} /></button>
+            {admin && <AdminProfile username={admin.name!} email={admin.email || null} inHeader />}
             <button className="menu-button" onClick={() => setMobileMenuOpen(!mobileMenuOpen)} aria-label={mobileMenuOpen ? "Close navigation" : "Open navigation"} aria-expanded={mobileMenuOpen} aria-controls="mobile-navigation">{mobileMenuOpen ? <X size={21} /> : <Menu size={21} />}</button>
           </div>
         </div>
@@ -68,6 +74,7 @@ export default function Navbar({ onOpenDossier, onOpenQuote }: {
           <nav id="mobile-navigation" className="mobile-navigation site-container" aria-label="Mobile navigation">
             {navLinks.map(link => <Link key={link.href} href={link.href} aria-current={pathname === link.href ? "page" : undefined} onClick={() => setMobileMenuOpen(false)}>{link.label}<ArrowUpRight size={15} /></Link>)}
             <button onClick={() => { setMobileMenuOpen(false); onOpenDossier(); }}><FileText size={16} /> Company profile</button>
+            {admin && <Link href="/admin" onClick={() => setMobileMenuOpen(false)}><LayoutDashboard size={16} />Admin workspace</Link>}
           </nav>
         )}
       </header>
